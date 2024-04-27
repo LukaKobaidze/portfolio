@@ -1,0 +1,20 @@
+.button {
+  --color: #fff;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  background: none;
+  color: var(--color);
+  border: 1px solid var(--color);
+  padding: 0.5em 0.7em;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 125ms, color 125ms;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color);
+    color: #000;
+  }
+}

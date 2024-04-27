@@ -1,0 +1,129 @@
+.container {
+  margin-top: 200px;
+}
+
+.title {
+  margin-bottom: 80px;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+  &Background {
+    position: absolute;
+    top: -125px;
+    right: -200px;
+    bottom: -125px;
+    left: -200px;
+    background-image: radial-gradient(
+      rgba(var(--rgb-primary), 0.6),
+      rgb(var(--rgb-bg))
+    );
+    z-index: -2;
+  }
+
+  &Text {
+    display: inline-block;
+    text-align: center;
+    font-size: 45px;
+    font-weight: 900;
+  }
+}
+
+.contactWrapper {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+}
+
+.subWrapper {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+}
+
+.subHeading {
+  font-size: 2em;
+  font-weight: 500;
+  margin-bottom: 11px;
+
+  &Socials {
+    margin-top: auto;
+  }
+}
+
+.subParagraph {
+  margin-bottom: 40px;
+  color: rgba(var(--rgb-text), 0.75);
+}
+
+.or {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+
+  &::before,
+  &::after {
+    content: '';
+    background-color: rgba(var(--rgb-primary), 0.4);
+    width: 1px;
+    height: 100%;
+  }
+
+  &::before {
+    margin-bottom: 24px;
+  }
+  &::after {
+    margin-top: 24px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.label {
+  margin-bottom: 7px;
+  color: rgba(var(--rgb-text), 1);
+}
+
+.field {
+  width: 100%;
+  margin-bottom: 24px;
+  font-size: 1.2em !important;
+}
+
+.button {
+  display: block;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 500;
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+  width: 100%;
+  --color: rgb(var(--rgb-primary));
+}
+
+.submitButton {
+  margin-top: 24px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(var(--rgb-primary), 0.5);
+  margin-top: auto;
+}
+
+.linkedinButton {
+}
+
+.githubButton {
+  margin-top: 12px;
+}

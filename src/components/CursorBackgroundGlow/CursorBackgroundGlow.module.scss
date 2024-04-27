@@ -1,0 +1,12 @@
+.backgroundGlow {
+  --width: 400px;
+  --height: 400px;
+
+  position: fixed;
+  top: calc(var(--height) / 2 * -1);
+  left: calc(var(--width) / 2 * -1);
+  background-image: radial-gradient(rgba(var(--rgb-primary), 0.35), rgb(0, 0, 0, 0));
+  width: var(--width);
+  height: var(--height);
+  z-index: -2;
+}

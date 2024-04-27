@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
+
+:root {
+  --rgb-bg: 15, 17, 26;
+  --rgb-primary: 67, 39, 243;
+  --rgb-text: 255, 255, 255;
+
+  --header-height: 75px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+svg {
+  display: block;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 2000px;
+  background-color: rgb(var(--rgb-bg));
+  color: rgb(var(--rgb-text));
+  font-family: 'JetBrains Mono', sans-serif;
+}

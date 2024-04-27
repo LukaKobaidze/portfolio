@@ -1,0 +1,119 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: rgb(19, 21, 33);
+  border-bottom: 1px solid rgba(var(--rgb-primary), 0.2);
+  z-index: 10;
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 1000px) {
+    font-size: 15px;
+  }
+  @media (max-width: 900px) {
+    font-size: 14px;
+  }
+  @media (max-width: 850px) {
+    font-size: 13px;
+  }
+  @media (max-width: 750px) {
+    font-size: 12px;
+  }
+  @media (max-width: 700px) {
+    font-size: 11px;
+  }
+}
+
+.nav {
+  height: 100%;
+  display: flex;
+}
+
+.anchor {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: currentColor;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  font-size: 1.125em;
+  height: 100%;
+  position: relative;
+  white-space: nowrap;
+
+  &Text {
+    transition: transform 150ms;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    font-size: 14px;
+    color: rgb(var(--rgb-primary));
+    opacity: 0;
+    transition: opacity 150ms, transform 150ms;
+  }
+
+  &::before {
+    content: '<';
+    left: 0.9em;
+    transform: translateX(-0.5em);
+
+    @media (max-width: 850px) {
+      left: 0.7em;
+    }
+  }
+  
+  &::after {
+    content: '/ >';
+    right: 0.2em;
+    word-spacing: -8px;
+    transform: translateX(0.5em);
+
+    @media (max-width: 850px) {
+      right: 0.1em;
+    }
+    @media (max-width: 750px) {
+      right: -0.1em;
+    }
+  }
+
+  &.active {
+    .anchorText {
+      transform: skewX(-10deg);
+    }
+
+    &::before,
+    &::after {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 1000px) {
+  }
+}
+
+.resumeButton {
+  --color: rgb(var(--rgb-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25em;
+  border-radius: 100vw;
+  width: 9.25em;
+  text-decoration: none;
+
+  &Icon {
+    margin-right: 0.6em;
+    width: 22px;
+  }
+}

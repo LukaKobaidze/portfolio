@@ -1,0 +1,30 @@
+/// <reference types="vite-plugin-svgr/client" />
+
+export { default as SvgAlert } from './alert.svg?react';
+export { default as SvgCheck } from './check.svg?react';
+export { default as SvgCode } from './code.svg?react';
+export { default as SvgCopy } from './copy.svg?react';
+export { default as SvgCss } from './css.svg?react';
+export { default as SvgCypress } from './cypress.svg?react';
+export { default as SvgExpress } from './express.svg?react';
+export { default as SvgGit } from './git.svg?react';
+export { default as SvgGithub } from './github.svg?react';
+export { default as SvgGraphql } from './graphql.svg?react';
+export { default as SvgHtml } from './html.svg?react';
+export { default as SvgJavascript } from './javascript.svg?react';
+export { default as SvgJest } from './jest.svg?react';
+export { default as SvgKeyboardArrowDown } from './keyboard_arrow_down.svg?react';
+export { default as SvgKeyboardArrowUp } from './keyboard_arrow_up.svg?react';
+export { default as SvgLinkedin } from './linkedin.svg?react';
+export { default as SvgMongodb } from './mongodb.svg?react';
+export { default as SvgMongoose } from './mongoose.svg?react';
+export { default as SvgNextjs } from './nextjs.svg?react';
+export { default as SvgNodejs } from './nodejs.svg?react';
+export { default as SvgReact } from './react.svg?react';
+export { default as SvgRedux } from './redux.svg?react';
+export { default as SvgSass } from './sass.svg?react';
+export { default as SvgSocketio } from './socketio.svg?react';
+export { default as SvgTestingLibrary } from './testing-library.svg?react';
+export { default as SvgTypescript } from './typescript.svg?react';
+export { default as SvgWeb } from './web.svg?react';
+export { default as SvgProfile } from './profile.svg?react';

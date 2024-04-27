@@ -1,0 +1,111 @@
+.tools {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  width: 50%;
+  max-width: 650px;
+  gap: 15px;
+  transform: perspective(450px) rotateY(-10deg);
+  margin-right: 50px;
+  animation: toolsLoad 1000ms;
+  animation-fill-mode: forwards;
+
+  @media (max-width: 1000px) {
+    gap: 12px;
+    font-size: 15px;
+    transform: perspective(300px) rotateY(-10deg);
+  }
+  @media (max-width: 875px) {
+    font-size: 14px;
+  }
+  @media (max-width: 800px) {
+    font-size: 13px;
+  }
+  @media (max-width: 750px) {
+    gap: 7px;
+    font-size: 11px;
+  }
+  @media (max-width: 650px) {
+    font-size: 9px;
+  }
+
+  &Box {
+    position: relative;
+    padding-bottom: 100%;
+    background-color: rgba(var(--rgb-primary), 0.05);
+    box-shadow: 6px 5px 0 rgba(var(--rgb-primary), 0.15);
+    border-radius: 7px;
+    border: 1px solid transparent;
+
+    transition: transform 200ms, background-color 200ms, box-shadow 200ms,
+      border-color 200ms;
+    transition-delay: 150ms;
+
+    &:hover {
+      transform: translateX(-10px) translateY(-5px);
+      background-color: rgba(var(--rgb-primary), 0.15);
+      box-shadow: 16px 10px 0 rgba(var(--rgb-primary), 0.25);
+      border-color: rgba(var(--rgb-primary), 0.75);
+      transition-delay: initial;
+
+      .toolsBoxName {
+        opacity: 1 !important;
+        transform: translate(-50%, calc(100% + 10px));
+        transition-delay: 100ms;
+      }
+    }
+    @media (max-width: 750px) {
+      box-shadow: 4px 3px 0 rgba(var(--rgb-primary), 0.15);
+
+      &:hover {
+        transform: translateX(-10px) translateY(-5px);
+        box-shadow: 14px 8px 0 rgba(var(--rgb-primary), 0.25);
+      }
+    }
+    @media (max-width: 650px)
+    {
+      border-radius: 3px;
+    }
+
+    &Content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 50%;
+      height: 50%;
+    }
+
+    &Icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    &Name {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      font-size: 1.25em;
+      transform: translate(-50%, 100%);
+      z-index: -3;
+      opacity: 0;
+      white-space: nowrap;
+      transition: opacity 200ms, transform 200ms;
+    }
+  }
+}
+
+.nextjsIconWhiteFiller {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background-color: #fff;
+  border-radius: 50%;
+  width: 75%;
+  height: 75%;
+}
