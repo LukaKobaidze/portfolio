@@ -1,0 +1,19 @@
+.resumeButton {
+  --color: rgb(var(--rgb-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25em;
+  border-radius: 100vw;
+  width: 9.25em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  text-decoration: none;
+
+  &Icon {
+    margin-right: 0.6em;
+    width: 1.1em;
+  }
+
+
+}

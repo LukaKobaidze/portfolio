@@ -1,0 +1,152 @@
+.menuButton {
+  --line-width: 20px;
+  --line-margin: 6px;
+  --line-height: 2px;
+  height: 100%;
+  border: none;
+  background: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: -5px;
+  display: block;
+  cursor: pointer;
+  z-index: 4;
+
+  &LinesWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 23px;
+    height: calc(var(--line-height) * 3 + var(--line-margin) * 2);
+  }
+
+  &Line {
+    position: absolute;
+    width: 100%;
+    height: var(--line-height);
+    background-color: #fff;
+
+    &A {
+      top: 0;
+    }
+
+    &C {
+      bottom: 0;
+    }
+  }
+
+  &Open {
+    .menuButtonLine {
+      transition: top 200ms ease 400ms, bottom 200ms ease 400ms, transform 200ms,
+        opacity 0s ease 200ms;
+    }
+  }
+
+  &Close {
+    .menuButtonLine {
+      transition: top 200ms, bottom 200ms, transform 200ms ease 400ms, opacity 200ms;
+
+      &A {
+        top: calc(var(--line-height) + var(--line-margin));
+        transform: rotate(45deg);
+      }
+
+      &B {
+        opacity: 0;
+      }
+
+      &C {
+        bottom: calc(var(--line-height) + var(--line-margin));
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  @supports (pointer-events: none) {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms;
+    display: block !important;
+
+    &.active {
+      opacity: 1;
+      pointer-events: initial;
+    }
+  }
+}
+
+.menu {
+  padding-top: 70px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgb(var(--rgb-bg));
+  border-right: 1px solid rgba(var(--rgb-primary), 0.3);
+  transform: translateX(-100%);
+  transition: transform 300ms;
+  z-index: 3;
+
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.nav {
+  --active-section: 0; // updates with javascript
+  width: 100%;
+  margin-top: 50px;
+  position: relative;
+
+  &Anchor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.75em;
+    height: 50px;
+
+    &:hover,
+    &:focus-visible {
+      color: rgb(var(--rgb-primary));
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 7px;
+    height: 50px;
+    background-color: rgb(var(--rgb-primary));
+    top: 0;
+    right: 0;
+    border-radius: 7px 0 0 7px;
+    transform: translateY(calc(100% * var(--active-section)));
+  }
+}
+
+.resumeButton {
+  margin-top: auto;
+  margin-bottom: 24px;
+  font-size: 1.5em !important;
+}

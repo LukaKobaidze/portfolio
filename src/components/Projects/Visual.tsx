@@ -2,18 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import projectsData from './projects.data';
 import ImageResponsive from '@/components/ImageResponsive';
 import styles from './Visual.module.scss';
-import { getImage } from '@/utils/image';
 import ContentWrapper from '../ContentWrapper';
 
 interface Props {
   projectIndex: number | null;
   projectProgress: number;
   windowWidth: number;
-  windowHeight: number;
+  onScrollToProject: (projectIndex: number) => void;
 }
 
 export default function Visual(props: Props) {
-  const { projectIndex, projectProgress, windowWidth, windowHeight } = props;
+  const { projectIndex, projectProgress, windowWidth, onScrollToProject } = props;
 
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -26,24 +25,12 @@ export default function Visual(props: Props) {
     videoRef.current?.load();
   }, [projectIndex]);
 
-  const handleScrollToProject = (id: string) => {
-    const element = document.getElementById(id);
-
-    if (!element) return;
-
-    window.scroll({
-      top:
-        element.getBoundingClientRect().top +
-        window.scrollY -
-        (element.clientHeight > windowHeight ? 100 : windowHeight / 2 - 250),
-    });
-  };
-
   return (
     <>
       <ContentWrapper className={styles.visualBackgroundWrapper}>
         {projectsData.map((project, indexLocal) => (
           <div
+            key={indexLocal}
             className={styles.visualBackground}
             style={{
               backgroundImage: `radial-gradient(
@@ -62,7 +49,9 @@ export default function Visual(props: Props) {
         className={styles.container}
         style={
           projectIndex !== null
-            ? { borderColor: `rgba(${projectsData[projectIndex].color}, 0.25)` }
+            ? ({
+                '--rgb-border-color': projectsData[projectIndex].color,
+              } as React.CSSProperties)
             : undefined
         }
         ref={ref}
@@ -87,7 +76,7 @@ export default function Visual(props: Props) {
                   ? { backgroundColor: `rgb(${project.color})` }
                   : undefined
               }
-              onClick={() => handleScrollToProject(project.id)}
+              onClick={() => onScrollToProject(i)}
             >
               <span className={styles['progress__bar-title']}>{project.title}</span>
               <div className={styles['progress__bar-fill-wrapper']}>

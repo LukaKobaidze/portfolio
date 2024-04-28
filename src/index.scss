@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
 
 :root {
+  color-scheme: dark;
   --rgb-bg: 15, 17, 26;
   --rgb-primary: 67, 39, 243;
   --rgb-text: 255, 255, 255;
+  --rgb-error: 253, 102, 102;
+  --rgb-success: 76, 187, 23;
 
   --header-height: 75px;
+
+  @media (max-width: 850px) {
+    --header-height: 70px;
+  }
+  @media (max-width: 750px) {
+    --header-height: 60px;
+  }
 }
 
 *,

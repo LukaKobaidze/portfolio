@@ -12,9 +12,26 @@
   cursor: pointer;
   transition: background-color 125ms, color 125ms;
 
-  &:hover,
-  &:focus-visible {
+  &:hover:not(:disabled),
+  &:focus-visible    {
     background-color: var(--color);
     color: #000;
   }
+
+  &.loading {
+    position: relative;
+    color: rgba(0, 0, 0, 0) !important;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.loadingSpinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.7em;
 }

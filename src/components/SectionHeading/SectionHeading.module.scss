@@ -1,0 +1,37 @@
+.title {
+  position: relative;
+  text-align: center;
+  margin-bottom: 7.5em;
+  font-size: 16px;
+
+  @media (max-width: 1000px) {
+    font-size: 15px;
+  }
+  @media (max-width: 900px) {
+    font-size: 14px;
+  }
+  @media (max-width: 800px) {
+    font-size: 13px;
+  }
+  &Background {
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    max-width: 475px;
+    background-image: radial-gradient(
+      rgba(var(--rgb-primary), 0.6),
+      rgb(var(--rgb-bg))
+    );
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -2;
+  }
+
+  &Text {
+    display: inline-block;
+    text-align: center;
+    font-size: 2.8125em;
+    font-weight: 900;
+  }
+}

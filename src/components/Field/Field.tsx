@@ -1,6 +1,5 @@
-import { SvgCopy } from '@/assets';
-import Tooltip from '../Tooltip';
 import styles from './Field.module.scss';
+import FieldCopy from './FieldCopy';
 
 type Props = (
   | ({ type: 'textarea' } & React.TextareaHTMLAttributes<HTMLTextAreaElement>)
@@ -22,31 +21,7 @@ export default function Field(props: Props) {
       />
     );
   } else if (props.type === 'copy') {
-    const { className, ...restProps } = props;
-
-    const handleCopy = () => {
-      
-    }
-
-    return (
-      <div className={`${styles.copyWrapper} ${className || ''}`}>
-        <input
-          className={`${styles.field} ${styles.copy}`}
-          readOnly
-          {...restProps}
-        />
-        <Tooltip
-          position="top"
-          text="Copy"
-          showOnHover
-          className={styles.copyButtonWrapper}
-        >
-          <button className={styles.copyButton} aria-label="Copy">
-            <SvgCopy />
-          </button>
-        </Tooltip>
-      </div>
-    );
+    return <FieldCopy {...props} />;
   } else {
     const { error, className, ...restProps } = props;
 

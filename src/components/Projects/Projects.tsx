@@ -4,6 +4,7 @@ import Description from './Description';
 import Visual from './Visual';
 import ContentWrapper from '@/components/ContentWrapper';
 import styles from './Projects.module.scss';
+import SectionHeading from '../SectionHeading/SectionHeading';
 
 interface Props {
   windowWidth: number;
@@ -90,6 +91,19 @@ export default function Projects(props: Props) {
     };
   }, [projectPositions, windowHeight]);
 
+  const handleScrollToProject = (projectIndex: number) => {
+    // element.getBoundingClientRect().top +
+    // window.scrollY -
+    // (element.clientHeight > windowHeight ? 100 : windowHeight / 2 - 250),
+
+    window.scroll({
+      top:
+        projectPositions[projectIndex] +
+        (projectPositions[projectIndex + 1] - projectPositions[projectIndex]) / 2 -
+        windowHeight / 2,
+    });
+  };
+
   return (
     <section id="projects" className={styles.container} ref={sectionRef}>
       <div
@@ -103,10 +117,9 @@ export default function Projects(props: Props) {
       />
 
       <ContentWrapper className={styles.wrapper}>
-        <div className={styles.title}>
-          {projectIndex === null && <div className={styles.titleBackground} />}
-          <h2 className={styles.titleText}>Projects</h2>
-        </div>
+        <SectionHeading backgroundGlow={projectIndex === null}>
+          Projects
+        </SectionHeading>
         <div className={styles.projects}>
           <div className={styles.descriptions}>
             {projectsData.map((project, index) => (
@@ -120,6 +133,8 @@ export default function Projects(props: Props) {
                 demo={project.demo}
                 color={project.color}
                 isActive={index === projectIndex}
+                projectIndex={index}
+                onScrollToProject={handleScrollToProject}
                 className={styles.description}
               />
             ))}
@@ -128,7 +143,7 @@ export default function Projects(props: Props) {
             projectIndex={projectIndex}
             projectProgress={projectProgress}
             windowWidth={windowWidth}
-            windowHeight={windowHeight}
+            onScrollToProject={handleScrollToProject}
           />
         </div>
       </ContentWrapper>

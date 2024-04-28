@@ -5,8 +5,8 @@ import Header from './components/Header';
 import AboutMe from './components/AboutMe';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import ScrollToBeginning from './components/ScrollToBeginning/ScrollToBeginning';
-import Copyright from './components/Copyright/Copyright';
+import ScrollToBeginning from './components/ScrollToBeginning';
+import Copyright from './components/Copyright';
 import styles from './App.module.scss';
 
 export default function App() {

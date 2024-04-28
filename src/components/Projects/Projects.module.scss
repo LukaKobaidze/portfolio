@@ -54,7 +54,7 @@
   @media (max-width: 1000px) {
     --visual-width: 475px;
   }
-  
+
   @media (max-width: 900px) {
     flex-direction: column-reverse;
   }
@@ -66,40 +66,12 @@
   & > * {
     padding: 100px 0;
   }
-  
+
   @media (max-width: 1000px) {
     width: 42%;
   }
   @media (max-width: 900px) {
     width: 100%;
-  }
-}
-
-.title {
-  margin-bottom: 120px;
-  width: max-content;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-
-  &Background {
-    position: absolute;
-    top: -100px;
-    right: -200px;
-    bottom: -100px;
-    left: -200px;
-    background-image: radial-gradient(
-      rgba(var(--rgb-primary), 0.6),
-      rgb(var(--rgb-bg))
-    );
-    z-index: -2;
-  }
-
-  &Text {
-    display: inline-block;
-    text-align: center;
-    font-size: 45px;
-    font-weight: 900;
   }
 }
 

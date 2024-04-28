@@ -1,7 +1,7 @@
 .button {
   color: inherit;
   background-color: rgba(var(--rgb-primary), 0.1);
-  border: 1px solid rgba(var(--rgb-primary), 0.75);
+  border: 1px solid rgba(var(--rgb-primary), 0.5);
   border-radius: 7px;
   cursor: pointer;
   width: 60px;
@@ -14,7 +14,6 @@
 
   &:hover,
   &:focus-visible {
-    background-color: rgba(var(--rgb-primary), 0.15);
     border-color: rgb(var(--rgb-primary), 1);
 
     .buttonIcon {

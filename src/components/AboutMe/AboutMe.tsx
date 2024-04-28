@@ -22,8 +22,11 @@ export default function AboutMe() {
         </p>
 
         <div className={styles.socialsWrapper}>
-          <SocialButton type="GitHub" className={styles.githubButton} />
-          <SocialButton type="Linkedin" />
+          <SocialButton
+            type="GitHub"
+            className={`${styles.socialButton} ${styles.socialButtonGithub}`}
+          />
+          <SocialButton type="Linkedin" className={styles.socialButton} />
         </div>
       </div>
 

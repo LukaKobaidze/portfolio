@@ -19,7 +19,10 @@ export default function useForm<T extends ReadonlyArray<string>[number]>(
     message: string;
   } | null>(null);
 
-  const onFieldChange = (e: React.ChangeEvent<HTMLInputElement>, field: T) => {
+  const onFieldChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    field: T
+  ) => {
     setFields((state) => ({ ...state, [field]: e.target.value }));
     setError(null);
   };
@@ -27,11 +30,23 @@ export default function useForm<T extends ReadonlyArray<string>[number]>(
   const validateEmpty = (fieldsToValidate?: T[]) => {
     (fieldsToValidate || fieldsArr).forEach((key) => {
       if (fields[key].trim().length === 0) {
-        setError({ field: key, message: 'Required field is empty.' });
+        setError({ field: key, message: 'Required field is empty!' });
         throw new Error();
       }
     });
   };
 
-  return { fields, error, setError, onFieldChange, validateEmpty };
+  const clearFields = (fieldsToClear?: T[]) => {
+    setFields((state) => {
+      const stateCopy = { ...state };
+
+      (fieldsToClear || fieldsArr).forEach((field) => {
+        stateCopy[field] = '';
+      });
+
+      return stateCopy;
+    });
+  };
+
+  return { fields, error, setError, onFieldChange, validateEmpty, clearFields };
 }

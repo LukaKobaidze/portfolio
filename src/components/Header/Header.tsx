@@ -1,15 +1,10 @@
-import { SvgProfile } from '@/assets';
-import Button from '../Button/Button';
-import ContentWrapper from '../ContentWrapper';
-import stylesButton from '@/components/Button/Button.module.scss';
-import styles from './Header.module.scss';
 import { useEffect, useState } from 'react';
-
-const navSections = [
-  { id: 'about-me', name: 'About Me' },
-  { id: 'projects', name: 'Projects' },
-  { id: 'contact', name: 'Contact' },
-];
+import { navSections } from './header.data';
+import ContentWrapper from '@/components/ContentWrapper';
+import Navigation from './Navigation';
+import styles from './Header.module.scss';
+import MobileMenu from './MobileMenu';
+import ResumeButton from './ResumeButton';
 
 interface Props {
   windowWidth: number;
@@ -18,7 +13,7 @@ interface Props {
 
 export default function Header({ windowWidth, windowHeight }: Props) {
   const [sectionPositions, setSectionPositions] = useState<number[]>([]);
-  const [activeSection, setActiveSection] = useState<number>(-1);
+  const [activeSection, setActiveSection] = useState<number>(0);
 
   const updateSectionPositions = () => {
     const positions: number[] = [];
@@ -69,31 +64,19 @@ export default function Header({ windowWidth, windowHeight }: Props) {
     };
   }, [sectionPositions, windowHeight]);
 
+  const menuBreakpoint = 600;
+
   return (
     <header className={styles.header}>
       <ContentWrapper className={styles.wrapper}>
+        {windowWidth <= menuBreakpoint && (
+          <MobileMenu activeSection={activeSection} />
+        )}
         <h2>LukaKobaidze</h2>
-        <nav className={styles.nav}>
-          {navSections.map((section, index) => (
-            <a
-              className={`${styles.anchor} ${
-                index === activeSection ? styles.active : ''
-              }`}
-              href={'#' + section.id}
-            >
-              <span className={styles.anchorText}>{section.name}</span>
-            </a>
-          ))}
-        </nav>
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${stylesButton.button} ${styles.resumeButton}`}
-        >
-          <SvgProfile className={styles.resumeButtonIcon} />
-          <span>Resume</span>
-        </a>
+        {windowWidth > menuBreakpoint && (
+          <Navigation activeSection={activeSection} />
+        )}
+        <ResumeButton className={styles.resumeButton} />
       </ContentWrapper>
     </header>
   );

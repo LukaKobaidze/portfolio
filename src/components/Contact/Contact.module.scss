@@ -1,32 +1,23 @@
 .container {
   margin-top: 200px;
-}
 
-.title {
-  margin-bottom: 80px;
-  width: max-content;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-
-  &Background {
-    position: absolute;
-    top: -125px;
-    right: -200px;
-    bottom: -125px;
-    left: -200px;
-    background-image: radial-gradient(
-      rgba(var(--rgb-primary), 0.6),
-      rgb(var(--rgb-bg))
-    );
-    z-index: -2;
+  @media (max-width: 925px) {
+    font-size: 14.5px;
   }
-
-  &Text {
-    display: inline-block;
-    text-align: center;
-    font-size: 45px;
-    font-weight: 900;
+  @media (max-width: 850px) {
+    font-size: 13.5px;
+  }
+  @media (max-width: 775px) {
+    font-size: 14.5px;
+  }
+  @media (max-width: 390px) {
+    font-size: 14px;
+  }
+  @media (max-width: 375px) {
+    font-size: 13.5px;
+  }
+  @media (max-width: 335px) {
+    font-size: 12.5px;
   }
 }
 
@@ -36,6 +27,11 @@
   display: flex;
   justify-content: space-between;
   max-width: 1200px;
+
+  @media (max-width: 775px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .subWrapper {
@@ -43,6 +39,11 @@
   display: flex;
   flex-direction: column;
   max-width: 480px;
+
+  @media (max-width: 775px) {
+    width: 97%;
+    margin-bottom: 50px;
+  }
 }
 
 .subHeading {
@@ -52,11 +53,15 @@
 
   &Socials {
     margin-top: auto;
+
+    @media (max-width: 775px) {
+      margin-top: 70px;
+    }
   }
 }
 
 .subParagraph {
-  margin-bottom: 40px;
+  margin-bottom: 2.5em;
   color: rgba(var(--rgb-text), 0.75);
 }
 
@@ -75,10 +80,14 @@
   }
 
   &::before {
-    margin-bottom: 24px;
+    margin-bottom: 1em;
   }
   &::after {
-    margin-top: 24px;
+    margin-top: 1em;
+  }
+
+  @media (max-width: 775px) {
+    display: none;
   }
 }
 
@@ -97,6 +106,34 @@
   width: 100%;
   margin-bottom: 24px;
   font-size: 1.2em !important;
+
+  @media (max-width: 375px) {
+    font-size: 16px !important;
+
+    &Copy {
+      font-size: 1.1em !important;
+    }
+  }
+
+  @media (max-width: 335px) {
+    &Copy {
+      font-size: 1em !important;
+    }
+  }
+}
+
+.message {
+  font-weight: 300;
+  font-size: 1.1em;
+  min-height: 35px;
+
+  &Error {
+    color: rgb(var(--rgb-error));
+  }
+
+  &Success {
+    color: rgb(var(--rgb-text));
+  }
 }
 
 .button {
@@ -110,18 +147,15 @@
   --color: rgb(var(--rgb-primary));
 }
 
-.submitButton {
-  margin-top: 24px;
-}
-
 .line {
   width: 100%;
   height: 1px;
   background-color: rgba(var(--rgb-primary), 0.5);
   margin-top: auto;
-}
 
-.linkedinButton {
+  @media (max-width: 775px) {
+    display: none;
+  }
 }
 
 .githubButton {

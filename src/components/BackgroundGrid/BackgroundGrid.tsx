@@ -16,7 +16,7 @@ export default function BackgroundGrid({ windowWidth, windowHeight }: Props) {
       Math.floor(windowWidth / boxSize) * Math.floor(windowHeight / boxSize);
 
     for (let i = 0; i < boxesAmount; i++) {
-      output.push(<div className={styles.box} />);
+      output.push(<div key={i} className={styles.box} />);
     }
 
     return output;

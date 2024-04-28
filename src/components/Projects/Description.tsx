@@ -12,12 +12,25 @@ interface Props {
   demo: string;
   color: string;
   isActive: boolean;
+  projectIndex: number;
+  onScrollToProject: (projectIndex: number) => void;
   className?: string;
 }
 
 export default function Description(props: Props) {
-  const { id, title, description, code, demo, tags, color, isActive, className } =
-    props;
+  const {
+    id,
+    title,
+    description,
+    code,
+    demo,
+    tags,
+    color,
+    isActive,
+    projectIndex,
+    onScrollToProject,
+    className,
+  } = props;
 
   return (
     <div
@@ -25,6 +38,11 @@ export default function Description(props: Props) {
       className={`${styles.project} ${
         isActive ? styles.projectActive : ''
       } ${className}`}
+      onClick={() => {
+        if (!isActive) {
+          onScrollToProject(projectIndex);
+        }
+      }}
     >
       <h3
         className={`${styles.title} ${

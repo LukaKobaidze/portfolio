@@ -1,16 +1,21 @@
 .container {
+  --rgb-border-color: 0, 0, 0; // updates with javascript
   width: var(--visual-width);
   height: var(--visual-height);
   position: sticky;
   right: 30px;
   top: calc(50% - var(--visual-height) / 2);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  border: 1px solid transparent;
+  border: 1px solid rgba(var(--rgb-border-color), 0.25);
   border-top: none;
   margin-bottom: 15px;
   border-radius: 0 0 7px 7px;
   background-color: rgb(var(--rgb-bg));
   transition: border-color 200ms;
+
+  &:hover {
+    border-color: rgba(var(--rgb-border-color), 0.6);
+  }
 
   @media (max-width: 900px) {
     width: 100vw;

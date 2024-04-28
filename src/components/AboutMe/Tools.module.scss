@@ -16,6 +16,8 @@
     gap: 12px;
     font-size: 15px;
     transform: perspective(300px) rotateY(-10deg);
+    width: 55%;
+    margin-right: 40px;
   }
   @media (max-width: 875px) {
     font-size: 14px;
@@ -26,9 +28,23 @@
   @media (max-width: 750px) {
     gap: 7px;
     font-size: 11px;
+    transform: perspective(250px) rotateY(-10deg);
   }
   @media (max-width: 650px) {
     font-size: 9px;
+  }
+  @media (max-width: 625px) {
+    font-size: 9px;
+    transform: perspective(200px) rotateY(-10deg);
+  }
+
+  @media (max-width: 575px) {
+    max-width: 401px;
+    width: 80%;
+    transform: none;
+    font-size: 13px;
+    margin-right: 0;
+    gap: 10px;
   }
 
   &Box {
@@ -64,9 +80,12 @@
         box-shadow: 14px 8px 0 rgba(var(--rgb-primary), 0.25);
       }
     }
-    @media (max-width: 650px)
-    {
+    @media (max-width: 650px) {
       border-radius: 3px;
+    }
+
+    @media (max-width: 575px) {
+      border-radius: 5px;
     }
 
     &Content {
