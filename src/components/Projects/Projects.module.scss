@@ -5,8 +5,14 @@
   padding-left: 30px;
   padding-top: 75px;
 
-  @media (max-width: 900px) {
+  @media (max-width: 800px) {
     padding-left: 0;
+  }
+}
+
+.heading {
+  @media (max-width: 800px) {
+    margin-bottom: 50px !important;
   }
 }
 
@@ -20,6 +26,7 @@
   animation: glowing 4s infinite;
   transition: background-color 200ms;
 }
+
 @keyframes glowing {
   0% {
     opacity: 1;
@@ -40,22 +47,16 @@
   --visual-height: calc(var(--visual-width) / 1.6);
 
   @media (max-width: 1335px) {
-    --visual-width: 650px;
+    --visual-width: 50vw;
   }
-
-  @media (max-width: 1225px) {
-    --visual-width: 600px;
-  }
-
-  @media (max-width: 1100px) {
-    --visual-width: 525px;
-  }
-
-  @media (max-width: 1000px) {
-    --visual-width: 475px;
-  }
-
   @media (max-width: 900px) {
+    --visual-width: 49vw;
+  }
+  @media (max-width: 850px) {
+    --visual-width: 45vw;
+  }
+
+  @media (max-width: 800px) {
     flex-direction: column-reverse;
   }
 }
@@ -70,7 +71,12 @@
   @media (max-width: 1000px) {
     width: 42%;
   }
-  @media (max-width: 900px) {
+
+  @media (max-width: 850px) {
+    width: 45%;
+  }
+
+  @media (max-width: 800px) {
     width: 100%;
   }
 }
@@ -98,4 +104,16 @@
     left: -25px;
     bottom: -25px;
   }
+}
+
+.mobileBackgroundGlow {
+  --rgb: 0, 0, 0;
+  background-image: radial-gradient(rgba(var(--rgb), 0.4), rgb(var(--rgb-bg)));
+  position: fixed;
+  width: 75%;
+  height: 75%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -2;
 }

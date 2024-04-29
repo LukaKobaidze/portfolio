@@ -116,8 +116,20 @@ export default function Projects(props: Props) {
         }}
       />
 
+      {windowWidth <= 800 && projectIndex !== null && (
+        <div
+          className={styles.mobileBackgroundGlow}
+          style={
+            { '--rgb': projectsData[projectIndex].color } as React.CSSProperties
+          }
+        />
+      )}
+
       <ContentWrapper className={styles.wrapper}>
-        <SectionHeading backgroundGlow={projectIndex === null}>
+        <SectionHeading
+          backgroundGlow={projectIndex === null}
+          classNameContainer={styles.heading}
+        >
           Projects
         </SectionHeading>
         <div className={styles.projects}>
@@ -139,12 +151,14 @@ export default function Projects(props: Props) {
               />
             ))}
           </div>
-          <Visual
-            projectIndex={projectIndex}
-            projectProgress={projectProgress}
-            windowWidth={windowWidth}
-            onScrollToProject={handleScrollToProject}
-          />
+
+          {windowWidth > 800 && (
+            <Visual
+              projectIndex={projectIndex}
+              projectProgress={projectProgress}
+              onScrollToProject={handleScrollToProject}
+            />
+          )}
         </div>
       </ContentWrapper>
     </section>

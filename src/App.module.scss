@@ -6,8 +6,11 @@
   padding-top: var(--header-height);
 }
 
-
 .scrollToBeginning {
   margin-top: 125px;
   margin-bottom: 50px;
+
+  @media (max-width: 775px) {
+    margin-top: 50px;
+  }
 }

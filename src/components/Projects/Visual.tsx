@@ -7,12 +7,11 @@ import ContentWrapper from '../ContentWrapper';
 interface Props {
   projectIndex: number | null;
   projectProgress: number;
-  windowWidth: number;
   onScrollToProject: (projectIndex: number) => void;
 }
 
 export default function Visual(props: Props) {
-  const { projectIndex, projectProgress, windowWidth, onScrollToProject } = props;
+  const { projectIndex, projectProgress, onScrollToProject } = props;
 
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -122,24 +121,22 @@ export default function Visual(props: Props) {
               />
             ))}
           </div>
-          {projectIndex !== null &&
-            projectsData[projectIndex].video &&
-            windowWidth > 900 && (
-              <video
-                ref={videoRef}
-                className={`${styles.video} ${isVideoLoaded ? styles.show : ''}`}
-                onLoadedMetadata={handleLoadedMetadata}
-                autoPlay
-                loop
-                muted
-                playsInline
-              >
-                <source
-                  src={`/${projectsData[projectIndex].video}`}
-                  type="video/mp4"
-                />
-              </video>
-            )}
+          {projectIndex !== null && projectsData[projectIndex].video && (
+            <video
+              ref={videoRef}
+              className={`${styles.video} ${isVideoLoaded ? styles.show : ''}`}
+              onLoadedMetadata={handleLoadedMetadata}
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source
+                src={`/${projectsData[projectIndex].video}`}
+                type="video/mp4"
+              />
+            </video>
+          )}
         </a>
       </div>
     </>

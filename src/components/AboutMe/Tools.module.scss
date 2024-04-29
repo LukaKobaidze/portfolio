@@ -14,37 +14,34 @@
 
   @media (max-width: 1000px) {
     gap: 12px;
-    font-size: 15px;
+    font-size: calc(1vw + 0.3em);
     transform: perspective(300px) rotateY(-10deg);
-    width: 55%;
-    margin-right: 40px;
-  }
-  @media (max-width: 875px) {
-    font-size: 14px;
-  }
-  @media (max-width: 800px) {
-    font-size: 13px;
+    width: 52%;
+    margin-right: 50px;
   }
   @media (max-width: 750px) {
     gap: 7px;
-    font-size: 11px;
+    font-size: calc(1vw + 0.2em);
     transform: perspective(250px) rotateY(-10deg);
   }
-  @media (max-width: 650px) {
-    font-size: 9px;
-  }
   @media (max-width: 625px) {
-    font-size: 9px;
     transform: perspective(200px) rotateY(-10deg);
   }
 
   @media (max-width: 575px) {
     max-width: 401px;
-    width: 80%;
+    width: 85%;
     transform: none;
-    font-size: 13px;
+    font-size: calc(1vw + 0.5em);
     margin-right: 0;
     gap: 10px;
+  }
+  @media (max-width: 425px) {
+    font-size: calc(1vw + 0.4em);
+  }
+  @media (max-width: 350px) {
+    font-size: calc(1vw + 0.3em);
+    gap: 7px;
   }
 
   &Box {

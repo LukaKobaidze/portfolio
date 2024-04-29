@@ -5,6 +5,7 @@ import Navigation from './Navigation';
 import styles from './Header.module.scss';
 import MobileMenu from './MobileMenu';
 import ResumeButton from './ResumeButton';
+import Logo from '../Logo/Logo';
 
 interface Props {
   windowWidth: number;
@@ -72,7 +73,7 @@ export default function Header({ windowWidth, windowHeight }: Props) {
         {windowWidth <= menuBreakpoint && (
           <MobileMenu activeSection={activeSection} />
         )}
-        <h2>LukaKobaidze</h2>
+        <Logo />
         {windowWidth > menuBreakpoint && (
           <Navigation activeSection={activeSection} />
         )}

@@ -1,0 +1,10 @@
+.logo {
+  display: flex;
+  align-items: center;
+  color: rgb(var(--rgb-primary));
+  font-size: 1.5em;
+  font-weight: 800;
+  cursor: pointer;
+  user-select: none;
+  height: 100%;
+}

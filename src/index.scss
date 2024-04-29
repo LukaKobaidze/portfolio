@@ -39,4 +39,6 @@ body {
   background-color: rgb(var(--rgb-bg));
   color: rgb(var(--rgb-text));
   font-family: 'JetBrains Mono', sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
 }

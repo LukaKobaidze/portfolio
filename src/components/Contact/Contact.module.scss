@@ -2,22 +2,13 @@
   margin-top: 200px;
 
   @media (max-width: 925px) {
-    font-size: 14.5px;
-  }
-  @media (max-width: 850px) {
-    font-size: 13.5px;
+    font-size: calc(1vw + 0.375em);
   }
   @media (max-width: 775px) {
     font-size: 14.5px;
   }
   @media (max-width: 390px) {
-    font-size: 14px;
-  }
-  @media (max-width: 375px) {
-    font-size: 13.5px;
-  }
-  @media (max-width: 335px) {
-    font-size: 12.5px;
+    font-size: calc(1vw + 0.65em);
   }
 }
 

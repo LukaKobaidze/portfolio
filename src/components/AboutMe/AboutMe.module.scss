@@ -1,7 +1,9 @@
 .container {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 24px;
 
   @media (max-width: 575px) {
     flex-direction: column;

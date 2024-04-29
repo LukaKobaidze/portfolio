@@ -1,7 +1,7 @@
 import ContentWrapper from '../ContentWrapper';
-import styles from './AboutMe.module.scss';
-import SocialButton from '../SocialButton/SocialButton';
+import SocialButton from '../SocialButton';
 import Tools from './Tools';
+import styles from './AboutMe.module.scss';
 
 export default function AboutMe() {
   return (
