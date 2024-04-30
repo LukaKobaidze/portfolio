@@ -27,10 +27,13 @@
     bottom: -150px;
     left: -150px;
     background-image: radial-gradient(
-      rgba(var(--rgb-primary), 0.4),
+      rgba(var(--rgb-primary), 0.5),
       rgb(var(--rgb-bg))
     );
     z-index: -2;
+    opacity: 0;
+    animation: textWrapperBackgroundGlowFirst 1000ms ease forwards,
+      textWrapperBackgroundGlowSecond 5000ms ease 1500ms infinite;
   }
 
   @media (max-width: 1300px) {
@@ -60,9 +63,28 @@
   @media (max-width: 300px) {
     font-size: calc(1vw + 0.2em);
   }
-  // @media (max-width: 375px) {
-  //   font-size: 8px;
-  // }
+}
+@keyframes textWrapperBackgroundGlowFirst {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes textWrapperBackgroundGlowSecond {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .heading {

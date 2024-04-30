@@ -1,6 +1,6 @@
 import { TagType } from '../Tag';
 
-const projects: {
+const projectsData: {
   id: string;
   title: string;
   description: string | string[];
@@ -146,4 +146,4 @@ const projects: {
   },
 ];
 
-export default projects;
+export default projectsData;

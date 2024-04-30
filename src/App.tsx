@@ -7,17 +7,25 @@ import Contact from './components/Contact';
 import ScrollToBeginning from './components/ScrollToBeginning';
 import Copyright from './components/Copyright';
 import styles from './App.module.scss';
+import useScrollState from './hooks/useScrollState';
 
 export default function App() {
+  const { activeSection, activeProject, activeProjectProgress, onScrollToProject } =
+    useScrollState();
+
   return (
     <>
       <BackgroundGrid />
       <CursorBackgroundGlow />
 
-      <Header />
+      <Header activeSection={activeSection} activeProject={activeProject} />
       <main className={styles.main}>
         <AboutMe />
-        <Projects />
+        <Projects
+          activeProject={activeProject}
+          activeProjectProgress={activeProjectProgress}
+          onScrollToProject={onScrollToProject}
+        />
         <Contact />
       </main>
       <footer>

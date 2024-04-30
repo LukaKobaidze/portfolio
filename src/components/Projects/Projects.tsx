@@ -1,103 +1,26 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useRef } from 'react';
+import { ViewportContext } from '@/context/viewport.context';
 import projectsData from './projects.data';
 import Description from './Description';
 import Visual from './Visual';
 import ContentWrapper from '@/components/ContentWrapper';
-import styles from './Projects.module.scss';
 import SectionHeading from '../SectionHeading/SectionHeading';
-import { ViewportContext } from '@/context/viewport.context';
+import styles from './Projects.module.scss';
+import ProgressBar from './ProgressBar';
 
-export default function Projects() {
-  const { viewportWidth, viewportHeight } = useContext(ViewportContext);
-  const [projectIndex, setProjectIndex] = useState<number | null>(null);
-  const [projectPositions, setProjectPositions] = useState<number[]>([]);
-  const [projectProgress, setProjectProgress] = useState(0);
+interface Props {
+  activeProject: number | null;
+  activeProjectProgress: number;
+  onScrollToProject: (activeProject: number) => void;
+}
+
+export default function Projects(props: Props) {
+  const { activeProject, activeProjectProgress, onScrollToProject } = props;
+
+  const { viewportWidth } = useContext(ViewportContext);
   const sectionRef = useRef<HTMLTableSectionElement>(null);
 
-  const updateProjectPositions = () => {
-    const firstProject = document.getElementById(projectsData[0].id)!;
-
-    const firstProjectPos =
-      firstProject.getBoundingClientRect().top + document.documentElement.scrollTop;
-
-    const positions: number[] = [
-      firstProjectPos,
-      firstProjectPos + firstProject.clientHeight,
-    ];
-
-    for (let i = 1; i < projectsData.length; i++) {
-      const project = document.getElementById(projectsData[i].id)!;
-
-      positions.push(
-        project.getBoundingClientRect().top +
-          document.documentElement.scrollTop +
-          project.clientHeight
-      );
-    }
-
-    setProjectPositions(positions);
-  };
-
-  useEffect(() => {
-    if (projectPositions.length !== 0) {
-      updateProjectPositions();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewportWidth]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (projectPositions.length === 0) {
-        updateProjectPositions();
-      }
-
-      const centerPos =
-        (document.documentElement.scrollTop || document.body.scrollTop) +
-        viewportHeight / 2;
-
-      if (
-        projectPositions.length > 0 &&
-        (centerPos < projectPositions[0] ||
-          centerPos > projectPositions[projectPositions.length - 1])
-      ) {
-        setProjectIndex(null);
-      } else {
-        const index = projectPositions.findIndex((pos) => {
-          return centerPos < pos;
-        });
-
-        if (index !== -1) {
-          setProjectIndex(index - 1);
-
-          setProjectProgress(
-            (centerPos - projectPositions[index - 1]) /
-              (projectPositions[index] - projectPositions[index - 1])
-          );
-        }
-      }
-    };
-
-    handleScroll();
-
-    document.addEventListener('scroll', handleScroll);
-
-    return () => {
-      document.removeEventListener('scroll', handleScroll);
-    };
-  }, [projectPositions, viewportHeight]);
-
-  const handleScrollToProject = (projectIndex: number) => {
-    // element.getBoundingClientRect().top +
-    // window.scrollY -
-    // (element.clientHeight > viewportHeight ? 100 : viewportHeight / 2 - 250),
-
-    window.scroll({
-      top:
-        projectPositions[projectIndex] +
-        (projectPositions[projectIndex + 1] - projectPositions[projectIndex]) / 2 -
-        viewportHeight / 2,
-    });
-  };
+  console.log(activeProject);
 
   return (
     <section id="projects" className={styles.container} ref={sectionRef}>
@@ -105,24 +28,24 @@ export default function Projects() {
         className={styles.projectBackground}
         style={{
           backgroundColor:
-            projectIndex !== null
-              ? projectsData[projectIndex].colorLight
+            activeProject !== null
+              ? projectsData[activeProject].colorLight
               : 'transparent',
         }}
       />
 
-      {viewportWidth <= 800 && projectIndex !== null && (
+      {viewportWidth <= 800 && activeProject !== null && (
         <div
           className={styles.mobileBackgroundGlow}
           style={
-            { '--rgb': projectsData[projectIndex].color } as React.CSSProperties
+            { '--rgb': projectsData[activeProject].color } as React.CSSProperties
           }
         />
       )}
 
       <ContentWrapper className={styles.wrapper}>
         <SectionHeading
-          backgroundGlow={projectIndex === null}
+          backgroundGlow={activeProject === null}
           classNameContainer={styles.heading}
         >
           Projects
@@ -139,9 +62,9 @@ export default function Projects() {
                 code={project.code}
                 demo={project.demo}
                 color={project.color}
-                isActive={index === projectIndex}
+                isActive={index === activeProject}
                 projectIndex={index}
-                onScrollToProject={handleScrollToProject}
+                onScrollToProject={onScrollToProject}
                 className={styles.description}
               />
             ))}
@@ -149,13 +72,28 @@ export default function Projects() {
 
           {viewportWidth > 800 && (
             <Visual
-              projectIndex={projectIndex}
-              projectProgress={projectProgress}
-              onScrollToProject={handleScrollToProject}
+              activeProject={activeProject}
+              activeProjectProgress={activeProjectProgress}
+              onScrollToProject={onScrollToProject}
             />
           )}
         </div>
       </ContentWrapper>
+      {viewportWidth <= 800 && activeProject !== null && (
+        <div
+          className={styles.progressBarWrapper}
+          style={{
+            borderTop: `1px solid rgba(${projectsData[activeProject].color}, .3)`,
+          }}
+        >
+          <ProgressBar
+            activeProject={activeProject}
+            activeProjectProgress={activeProjectProgress}
+            onScrollToProject={onScrollToProject}
+            className={styles.progressBar}
+          />
+        </div>
+      )}
     </section>
   );
 }

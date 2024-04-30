@@ -9,6 +9,8 @@ import styles from './Contact.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import SectionHeading from '../SectionHeading/SectionHeading';
 
+const EMAIL_ADDRESS = 'lukakobaidze.dev@gmail.com';
+
 export default function Contact() {
   const { fields, error, onFieldChange, validateEmpty, clearFields } = useForm([
     'email',
@@ -138,9 +140,16 @@ export default function Contact() {
           <Field
             className={`${styles.field} ${styles.fieldCopy}`}
             type="copy"
-            value="lukakobaidze.dev@gmail.com"
+            value={EMAIL_ADDRESS}
           />
-          <a className={`${stylesButton.button} ${styles.button}`}>Email Me!</a>
+          <a
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL_ADDRESS}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${stylesButton.button} ${styles.button}`}
+          >
+            Email Me!
+          </a>
 
           <div className={styles.line} />
 

@@ -3,15 +3,16 @@ import projectsData from './projects.data';
 import ImageResponsive from '@/components/ImageResponsive';
 import styles from './Visual.module.scss';
 import ContentWrapper from '../ContentWrapper';
+import ProgressBar from './ProgressBar';
 
 interface Props {
-  projectIndex: number | null;
-  projectProgress: number;
+  activeProject: number | null;
+  activeProjectProgress: number;
   onScrollToProject: (projectIndex: number) => void;
 }
 
 export default function Visual(props: Props) {
-  const { projectIndex, projectProgress, onScrollToProject } = props;
+  const { activeProject, activeProjectProgress, onScrollToProject } = props;
 
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -22,7 +23,7 @@ export default function Visual(props: Props) {
   useEffect(() => {
     setIsVideoLoaded(false);
     videoRef.current?.load();
-  }, [projectIndex]);
+  }, [activeProject]);
 
   return (
     <>
@@ -37,8 +38,8 @@ export default function Visual(props: Props) {
               rgb(${project.color}),
               rgba(0, 0, 0, 0)
             )`,
-              opacity: indexLocal === projectIndex ? 1 : 0,
-              animation: indexLocal !== projectIndex ? 'none' : undefined,
+              opacity: indexLocal === activeProject ? 1 : 0,
+              animation: indexLocal !== activeProject ? 'none' : undefined,
             }}
           />
         ))}
@@ -47,56 +48,23 @@ export default function Visual(props: Props) {
       <div
         className={styles.container}
         style={
-          projectIndex !== null
+          activeProject !== null
             ? ({
-                '--rgb-border-color': projectsData[projectIndex].color,
+                '--rgb-border-color': projectsData[activeProject].color,
               } as React.CSSProperties)
             : undefined
         }
         ref={ref}
       >
-        <div
-          className={`${styles['progress']} ${
-            projectIndex === null ? styles['progress--disable'] : ''
-          }`}
-        >
-          {projectsData.map((project, i) => (
-            <div
-              key={i}
-              className={`${styles['progress__bar']} ${
-                projectIndex !== null
-                  ? i === projectIndex
-                    ? styles['progress__bar--active']
-                    : ''
-                  : ''
-              }`}
-              style={
-                i < (projectIndex || 0)
-                  ? { backgroundColor: `rgb(${project.color})` }
-                  : undefined
-              }
-              onClick={() => onScrollToProject(i)}
-            >
-              <span className={styles['progress__bar-title']}>{project.title}</span>
-              <div className={styles['progress__bar-fill-wrapper']}>
-                {i === projectIndex && (
-                  <div
-                    className={styles['progress__bar-fill']}
-                    style={
-                      {
-                        '--filled': projectProgress,
-                        backgroundColor: `rgb(${project.color})`,
-                      } as React.CSSProperties
-                    }
-                  />
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-        {projectIndex !== null && <div className={styles.overlay} />}
+        <ProgressBar
+          activeProject={activeProject}
+          activeProjectProgress={activeProjectProgress}
+          onScrollToProject={onScrollToProject}
+          className={styles.progressBar}
+        />
+        {activeProject !== null && <div className={styles.overlay} />}
         <a
-          href={projectIndex !== null ? projectsData[projectIndex].demo : ''}
+          href={activeProject !== null ? projectsData[activeProject].demo : ''}
           target="_blank"
           rel="noreferrer"
           tabIndex={-1}
@@ -116,12 +84,12 @@ export default function Visual(props: Props) {
                 }
                 alt=""
                 className={`${styles.image} ${
-                  index !== projectIndex ? styles['image--hide'] : ''
+                  index !== activeProject ? styles['image--hide'] : ''
                 }`}
               />
             ))}
           </div>
-          {projectIndex !== null && projectsData[projectIndex].video && (
+          {activeProject !== null && projectsData[activeProject].video && (
             <video
               ref={videoRef}
               className={`${styles.video} ${isVideoLoaded ? styles.show : ''}`}
@@ -132,7 +100,7 @@ export default function Visual(props: Props) {
               playsInline
             >
               <source
-                src={`/${projectsData[projectIndex].video}`}
+                src={`/${projectsData[activeProject].video}`}
                 type="video/mp4"
               />
             </video>

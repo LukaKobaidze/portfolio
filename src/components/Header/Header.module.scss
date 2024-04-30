@@ -7,6 +7,7 @@
   background-color: rgb(19, 21, 33);
   border-bottom: 1px solid rgba(var(--rgb-primary), 0.2);
   z-index: 10;
+  transition: border-color 200ms;
 }
 
 .wrapper {
@@ -20,6 +21,10 @@
   }
   @media (max-width: 600px) {
     font-size: 11px;
+  }
+
+  @media (max-width: 365px) {
+    font-size: calc(1vw + 0.4em);
   }
 }
 

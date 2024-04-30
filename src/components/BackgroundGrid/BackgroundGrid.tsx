@@ -2,10 +2,10 @@ import { useContext, useMemo } from 'react';
 import styles from './BackgroundGrid.module.scss';
 import { ViewportContext } from '@/context/viewport.context';
 
-const boxSize = 110;
-
 export default function BackgroundGrid() {
   const { viewportWidth, viewportHeight } = useContext(ViewportContext);
+
+  const boxSize = viewportWidth <= 675 ? viewportWidth / 6 : 130;
 
   const generatedBoxes = useMemo(() => {
     const output: JSX.Element[] = [];
@@ -18,7 +18,14 @@ export default function BackgroundGrid() {
     }
 
     return output;
-  }, [viewportWidth, viewportHeight]);
+  }, [viewportWidth, viewportHeight, boxSize]);
 
-  return <div className={styles.container}>{generatedBoxes}</div>;
+  return (
+    <div
+      className={styles.container}
+      style={{ gridTemplateColumns: `repeat(auto-fill, minmax(${boxSize}px, 1fr))` }}
+    >
+      {generatedBoxes}
+    </div>
+  );
 }

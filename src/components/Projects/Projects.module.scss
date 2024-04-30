@@ -92,23 +92,23 @@
   }
 }
 
-.progressBar {
+.progressBarWrapper {
   position: fixed;
-  z-index: 2;
-  bottom: -20px;
-  left: -10px;
-  font-size: 32px;
-  transform: scale(0.45);
+  bottom: 0;
+  width: 100%;
+}
 
-  @media (max-width: 625px) {
-    left: -25px;
-    bottom: -25px;
-  }
+.progressBar {
+  --gap: 7px;
+  height: 31px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 9px;
 }
 
 .mobileBackgroundGlow {
   --rgb: 0, 0, 0;
-  background-image: radial-gradient(rgba(var(--rgb), 0.4), rgb(var(--rgb-bg)));
+  background-image: radial-gradient(rgba(var(--rgb), 0.3), rgb(var(--rgb-bg)));
   position: fixed;
   width: 75%;
   height: 75%;
