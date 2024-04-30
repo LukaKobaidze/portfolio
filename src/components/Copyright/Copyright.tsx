@@ -1,7 +1,5 @@
 import styles from './Copyright.module.scss';
 
-interface Props {}
-
-export default function Copyright(props: Props) {
+export default function Copyright() {
   return <div className={styles.copyright}>&copy; 2024 Luka Kobaidze</div>;
 }

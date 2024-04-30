@@ -6,8 +6,8 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import ScrollToBeginning from './components/ScrollToBeginning';
 import Copyright from './components/Copyright';
-import styles from './App.module.scss';
 import useScrollState from './hooks/useScrollState';
+import styles from './App.module.scss';
 
 export default function App() {
   const { activeSection, activeProject, activeProjectProgress, onScrollToProject } =

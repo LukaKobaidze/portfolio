@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
 import { ViewportContextProvider } from './context/viewport.context.tsx';
+import App from './App.tsx';
 import './index.scss';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
