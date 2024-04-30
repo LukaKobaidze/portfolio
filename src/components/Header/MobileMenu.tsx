@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import styles from './MobileMenu.module.scss';
 import { navSections } from './header.data';
 import ResumeButton from './ResumeButton';
+import Logo from '../Logo/Logo';
+import SocialButton from '../SocialButton';
 
 interface Props {
   activeSection: number;
@@ -42,7 +44,7 @@ export default function MobileMenu({ activeSection }: Props) {
       </button>
 
       <div className={`${styles.menu} ${isOpen ? styles.active : ''}`}>
-        <h2>LukaKobaidze</h2>
+        <Logo className={styles.logo} />
         <nav
           className={styles.nav}
           style={{ '--active-section': activeSection } as React.CSSProperties}
@@ -58,7 +60,14 @@ export default function MobileMenu({ activeSection }: Props) {
             </a>
           ))}
         </nav>
-        <ResumeButton className={styles.resumeButton} />
+
+        <SocialButton
+          type="GitHub"
+          className={`${styles.button} ${styles.githubButton}`}
+        />
+        <SocialButton type="Linkedin" className={styles.button} />
+        <div className={styles.seperator} />
+        <ResumeButton className={`${styles.button} ${styles.resumeButton}`} />
       </div>
       <div
         className={`${styles.backdrop} ${isOpen ? styles.active : ''}`}

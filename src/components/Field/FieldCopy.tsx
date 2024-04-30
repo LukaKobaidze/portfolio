@@ -40,8 +40,9 @@ export default function FieldCopy({ className, ...restProps }: Props) {
       <Tooltip
         position="top"
         text={copied ? 'Copied!' : 'Copy'}
-        showOnHover
         className={fieldStyles.copyButtonWrapper}
+        showOnHover
+        show={copied}
       >
         <button
           className={fieldStyles.copyButton}

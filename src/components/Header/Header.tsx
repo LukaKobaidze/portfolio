@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { navSections } from './header.data';
 import ContentWrapper from '@/components/ContentWrapper';
 import Navigation from './Navigation';
@@ -6,13 +6,10 @@ import styles from './Header.module.scss';
 import MobileMenu from './MobileMenu';
 import ResumeButton from './ResumeButton';
 import Logo from '../Logo/Logo';
+import { ViewportContext } from '@/context/viewport.context';
 
-interface Props {
-  windowWidth: number;
-  windowHeight: number;
-}
-
-export default function Header({ windowWidth, windowHeight }: Props) {
+export default function Header() {
+  const { viewportWidth, viewportHeight } = useContext(ViewportContext);
   const [sectionPositions, setSectionPositions] = useState<number[]>([]);
   const [activeSection, setActiveSection] = useState<number>(0);
 
@@ -36,7 +33,7 @@ export default function Header({ windowWidth, windowHeight }: Props) {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [windowWidth]);
+  }, [viewportWidth]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +43,7 @@ export default function Header({ windowWidth, windowHeight }: Props) {
 
       const centerPos =
         (document.documentElement.scrollTop || document.body.scrollTop) +
-        windowHeight / 2;
+        viewportHeight / 2;
 
       if (centerPos < sectionPositions[0]) {
         setActiveSection(0);
@@ -63,18 +60,18 @@ export default function Header({ windowWidth, windowHeight }: Props) {
     return () => {
       document.removeEventListener('scroll', handleScroll);
     };
-  }, [sectionPositions, windowHeight]);
+  }, [sectionPositions, viewportHeight]);
 
   const menuBreakpoint = 600;
 
   return (
     <header className={styles.header}>
       <ContentWrapper className={styles.wrapper}>
-        {windowWidth <= menuBreakpoint && (
+        {viewportWidth <= menuBreakpoint && (
           <MobileMenu activeSection={activeSection} />
         )}
-        <Logo />
-        {windowWidth > menuBreakpoint && (
+        <Logo className={styles.logo} />
+        {viewportWidth > menuBreakpoint && (
           <Navigation activeSection={activeSection} />
         )}
         <ResumeButton className={styles.resumeButton} />

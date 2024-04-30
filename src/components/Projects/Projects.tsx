@@ -1,19 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import projectsData from './projects.data';
 import Description from './Description';
 import Visual from './Visual';
 import ContentWrapper from '@/components/ContentWrapper';
 import styles from './Projects.module.scss';
 import SectionHeading from '../SectionHeading/SectionHeading';
+import { ViewportContext } from '@/context/viewport.context';
 
-interface Props {
-  windowWidth: number;
-  windowHeight: number;
-}
-
-export default function Projects(props: Props) {
-  const { windowWidth, windowHeight } = props;
-
+export default function Projects() {
+  const { viewportWidth, viewportHeight } = useContext(ViewportContext);
   const [projectIndex, setProjectIndex] = useState<number | null>(null);
   const [projectPositions, setProjectPositions] = useState<number[]>([]);
   const [projectProgress, setProjectProgress] = useState(0);
@@ -48,7 +43,7 @@ export default function Projects(props: Props) {
       updateProjectPositions();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [windowWidth]);
+  }, [viewportWidth]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +53,7 @@ export default function Projects(props: Props) {
 
       const centerPos =
         (document.documentElement.scrollTop || document.body.scrollTop) +
-        windowHeight / 2;
+        viewportHeight / 2;
 
       if (
         projectPositions.length > 0 &&
@@ -89,18 +84,18 @@ export default function Projects(props: Props) {
     return () => {
       document.removeEventListener('scroll', handleScroll);
     };
-  }, [projectPositions, windowHeight]);
+  }, [projectPositions, viewportHeight]);
 
   const handleScrollToProject = (projectIndex: number) => {
     // element.getBoundingClientRect().top +
     // window.scrollY -
-    // (element.clientHeight > windowHeight ? 100 : windowHeight / 2 - 250),
+    // (element.clientHeight > viewportHeight ? 100 : viewportHeight / 2 - 250),
 
     window.scroll({
       top:
         projectPositions[projectIndex] +
         (projectPositions[projectIndex + 1] - projectPositions[projectIndex]) / 2 -
-        windowHeight / 2,
+        viewportHeight / 2,
     });
   };
 
@@ -116,7 +111,7 @@ export default function Projects(props: Props) {
         }}
       />
 
-      {windowWidth <= 800 && projectIndex !== null && (
+      {viewportWidth <= 800 && projectIndex !== null && (
         <div
           className={styles.mobileBackgroundGlow}
           style={
@@ -152,7 +147,7 @@ export default function Projects(props: Props) {
             ))}
           </div>
 
-          {windowWidth > 800 && (
+          {viewportWidth > 800 && (
             <Visual
               projectIndex={projectIndex}
               projectProgress={projectProgress}

@@ -65,7 +65,15 @@
     transition: color 125ms, border-color 125ms;
     cursor: pointer;
 
-    &:hover {
+    @media (hover: hover) {
+      &:hover {
+        color: rgba(var(--rgb-primary), 1);
+        border-color: rgba(var(--rgb-primary), 0.6);
+      }
+    }
+
+    &:active,
+    &:focus-visible {
       color: rgba(var(--rgb-primary), 1);
       border-color: rgba(var(--rgb-primary), 0.6);
     }

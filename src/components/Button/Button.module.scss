@@ -12,8 +12,15 @@
   cursor: pointer;
   transition: background-color 125ms, color 125ms;
 
-  &:hover:not(:disabled),
-  &:focus-visible    {
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background-color: var(--color);
+      color: #000;
+    }
+  }
+
+  &:active:not(:disabled),
+  &:focus-visible {
     background-color: var(--color);
     color: #000;
   }

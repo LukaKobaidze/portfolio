@@ -1,4 +1,3 @@
-import useWindowDimensions from './hooks/useWindowDimensions';
 import BackgroundGrid from './components/BackgroundGrid';
 import CursorBackgroundGlow from './components/CursorBackgroundGlow';
 import Header from './components/Header';
@@ -10,17 +9,15 @@ import Copyright from './components/Copyright';
 import styles from './App.module.scss';
 
 export default function App() {
-  const [windowWidth, windowHeight] = useWindowDimensions();
-
   return (
     <>
-      <BackgroundGrid windowWidth={windowWidth} windowHeight={windowHeight} />
+      <BackgroundGrid />
       <CursorBackgroundGlow />
 
-      <Header windowWidth={windowWidth} windowHeight={windowHeight} />
+      <Header />
       <main className={styles.main}>
         <AboutMe />
-        <Projects windowWidth={windowWidth} windowHeight={windowHeight} />
+        <Projects />
         <Contact />
       </main>
       <footer>
