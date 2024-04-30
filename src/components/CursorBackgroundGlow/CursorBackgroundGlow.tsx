@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import styles from './CursorBackgroundGlow.module.scss';
+import projectsData from '../Projects/projects.data';
 
-export default function CursorBackgroundGlow() {
+interface Props {
+  activeProject: number | null;
+}
+
+export default function CursorBackgroundGlow({ activeProject }: Props) {
   const [fadeOut, setFadeOut] = useState(true);
   const [coords, setCoords] = useState<{ x: number; y: number } | null>(null);
 
@@ -46,7 +51,13 @@ export default function CursorBackgroundGlow() {
   return (
     <div
       className={`${styles.backgroundGlow} ${fadeOut ? styles.fadeOut : ''}`}
-      style={{ transform: `translate(${coords.x}px, ${coords.y}px)` }}
+      style={
+        {
+          transform: `translate(${coords.x}px, ${coords.y}px)`,
+          '--rgb':
+            activeProject !== null ? projectsData[activeProject].color : undefined,
+        } as React.CSSProperties
+      }
     />
   );
 }

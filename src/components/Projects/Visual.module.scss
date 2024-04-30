@@ -14,7 +14,7 @@
   transition: border-color 200ms;
 
   &:hover {
-    border-color: rgba(var(--rgb-border-color), 0.6);
+    border-color: rgba(var(--rgb-border-color), 0.35);
   }
 }
 

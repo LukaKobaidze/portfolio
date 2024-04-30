@@ -16,9 +16,9 @@ export default function App() {
   return (
     <>
       <BackgroundGrid />
-      <CursorBackgroundGlow />
+      <CursorBackgroundGlow activeProject={activeProject} />
 
-      <Header activeSection={activeSection} activeProject={activeProject} />
+      <Header activeSection={activeSection} />
       <main className={styles.main}>
         <AboutMe />
         <Projects

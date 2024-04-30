@@ -10,7 +10,11 @@ export default function AboutMe() {
         <h1 className={styles.heading}>
           <span className={styles.headingSpan}>Hi, my</span>
           <span className={styles.headingSpan}>
-            name is <span className={styles.headingName}>Luka</span>.
+            name is{' '}
+            <span className={styles.headingName}>
+              <span className={styles.headingNameNeon}>Luka</span>
+            </span>
+            .
           </span>
         </h1>
 

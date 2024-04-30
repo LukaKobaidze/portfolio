@@ -56,6 +56,10 @@ export default function useScrollState() {
 
   useEffect(() => {
     const handleSection = () => {
+      if (document.documentElement.scrollTop === 0) {
+        return setActiveSection(0);
+      }
+
       const centerPos =
         (document.documentElement.scrollTop || document.body.scrollTop) +
         viewportHeight / 2;

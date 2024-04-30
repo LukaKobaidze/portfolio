@@ -32,8 +32,8 @@
     );
     z-index: -2;
     opacity: 0;
-    animation: textWrapperBackgroundGlowFirst 1000ms ease forwards,
-      textWrapperBackgroundGlowSecond 5000ms ease 1500ms infinite;
+    animation: textWrapperBackgroundGlowFirst 1000ms ease 1500ms forwards,
+      textWrapperBackgroundGlowSecond 5000ms ease 2500ms infinite;
   }
 
   @media (max-width: 1300px) {
@@ -93,6 +93,7 @@
   text-shadow: 0 6px 6px rgba(0, 0, 0, 1);
   line-height: 1.2;
   word-spacing: -0.25em;
+  animation: fadeIn 500ms forwards;
 
   &Span {
     display: block;
@@ -101,13 +102,27 @@
   &Name {
     font-weight: 800;
     color: rgb(var(--rgb-primary));
+    position: relative;
 
     @supports (text-shadow: #fff 0 0 0) {
-      text-shadow: rgb(var(--rgb-primary)) 0px 0px 3px,
-        rgb(var(--rgb-primary)) 0px 0px 3px, rgb(var(--rgb-primary)) 0px 0px 3px,
-        rgb(var(--rgb-primary)) 0px 0px 3px, rgb(var(--rgb-primary)) 0px 0px 3px,
-        rgb(var(--rgb-primary)) 0px 0px 3px;
-      color: rgba(var(--rgb-bg), 0.9);
+      &Neon {
+        text-shadow: rgb(var(--rgb-primary)) 0px 0px 3px,
+          rgb(var(--rgb-primary)) 0px 0px 3px, rgb(var(--rgb-primary)) 0px 0px 3px,
+          rgb(var(--rgb-primary)) 0px 0px 3px, rgb(var(--rgb-primary)) 0px 0px 3px,
+          rgb(var(--rgb-primary)) 0px 0px 3px;
+        color: rgba(var(--rgb-bg), 0.9);
+        opacity: 0;
+        animation: opacityFadeIn 750ms ease 1500ms forwards;
+      }
+
+      &::before {
+        content: 'Luka';
+        position: absolute;
+        text-shadow: none;
+        animation: opacityFadeOut 750ms ease 1500ms forwards;
+        top: 50%;
+        transform: translateY(-50%);
+      }
     }
   }
 }
@@ -118,6 +133,8 @@
   font-size: 2.0625em;
   line-height: 1.75;
   word-spacing: 0.363636364em;
+  opacity: 0;
+  animation: fadeIn 500ms ease 500ms forwards;
 
   &Span {
     display: block;
@@ -131,6 +148,8 @@
 .socialsWrapper {
   display: flex;
   margin-top: 4.5em;
+  opacity: 0;
+  animation: fadeIn 500ms ease 1000ms forwards;
 }
 
 .socialButton {
@@ -140,5 +159,44 @@
 
   &Github {
     margin-right: 0.6em;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes opacityFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes opacityFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
