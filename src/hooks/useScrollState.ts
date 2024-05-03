@@ -50,6 +50,17 @@ export default function useScrollState() {
   };
 
   useEffect(() => {
+    const timeout = setTimeout(() => {
+      updateProjectPositions();
+      updateSectionPositions();
+    }, 3000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  useEffect(() => {
     updateProjectPositions();
     updateSectionPositions();
   }, [viewportWidth, viewportHeight]);
