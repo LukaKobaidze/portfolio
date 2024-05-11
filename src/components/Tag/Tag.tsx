@@ -23,6 +23,8 @@ const tagColors = {
   Jest: '#99425b',
   Cypress: '#7d7d89',
   'Testing Library': '#ffffff',
+  'Zustand': '#2359c1',
+  'Immer': '#00e7c3',
 } as const;
 
 export type TagType = keyof typeof tagColors;

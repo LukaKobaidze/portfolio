@@ -35,7 +35,7 @@ const projectsData: {
       'MongoDB',
       'Mongoose',
       'Google OAuth',
-      'GitHub OAuth'
+      'GitHub OAuth',
     ],
     color: '254, 105, 105',
     colorLight: 'rgba(254, 105, 105, .125)',
@@ -136,6 +136,24 @@ const projectsData: {
     video: 'chess.mp4',
     code: 'https://github.com/LukaKobaidze/chess',
     demo: 'https://lukakobaidze-chess.netlify.app/',
+  },
+  {
+    id: 'markdown',
+    title: 'Markdown',
+    description: [
+      'Create, Read, Update, and Delete markdown documents',
+      'Create and name documents & folders',
+      'Edit the markdown of a document and see the formatted preview of the content',
+      'Resize `markdown` and `preview` views to your liking.',
+      "View the optimal layout for the app depending on their device's screen size",
+      'use localStorage to save the current state in the browser that persists when the browser is refreshed',
+    ],
+    tags: ['React', 'TypeScript', 'Sass', 'Zustand', 'Immer'],
+    color: '228, 102, 67',
+    colorLight: 'rgba(228, 102, 67, .5)',
+    image: 'markdown.png',
+    code: 'https://github.com/LukaKobaidze/markdown',
+    demo: 'https://lukakobaidze-markdown.netlify.app/',
   },
 ];
 
