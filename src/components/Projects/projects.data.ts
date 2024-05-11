@@ -150,7 +150,7 @@ const projectsData: {
     ],
     tags: ['React', 'TypeScript', 'Sass', 'Zustand', 'Immer'],
     color: '228, 102, 67',
-    colorLight: 'rgba(228, 102, 67, .5)',
+    colorLight: 'rgba(228, 102, 67, .25)',
     image: 'markdown.png',
     code: 'https://github.com/LukaKobaidze/markdown',
     demo: 'https://lukakobaidze-markdown.netlify.app/',
