@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import projectsData from './projects.data';
-import ImageResponsive from '@/components/ImageResponsive';
 import styles from './Visual.module.scss';
 import ContentWrapper from '../ContentWrapper';
 import ProgressBar from './ProgressBar';
@@ -71,17 +70,9 @@ export default function Visual(props: Props) {
         >
           <div className={styles.imagesContainer}>
             {projectsData.map((project, index) => (
-              <ImageResponsive
+              <img
                 key={index}
-                desktop={{ path: `/${project.image}` }}
-                tablet={
-                  project.imageTablet
-                    ? {
-                        path: `/${project.imageTablet}`,
-                        breakpoint: 900,
-                      }
-                    : undefined
-                }
+                src={project.image}
                 alt=""
                 className={`${styles.image} ${
                   index !== activeProject ? styles['image--hide'] : ''

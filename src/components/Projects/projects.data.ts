@@ -10,9 +10,7 @@ const projectsData: {
   image: string;
   color: string;
   colorLight: string;
-  imageTablet?: string;
   video?: string;
-  videoTablet?: string;
 }[] = [
   {
     id: 'typingapp',
@@ -25,7 +23,7 @@ const projectsData: {
       'Results after typing is done, including WPM, Accuracy, Errors, Interactive Dashboard.',
       'User can customize the app to their liking.',
       'Various app color themes.',
-      'User can create account that will be saved on database (Includes GitHub OAuth).',
+      'User can create account that will be saved on database, including Google OAuth & GitHub OAuth.',
       'Personal stats, history and customizations will be saved to the account.',
     ],
     tags: [
@@ -36,14 +34,13 @@ const projectsData: {
       'Express',
       'MongoDB',
       'Mongoose',
-      'OAuth2',
+      'Google OAuth',
+      'GitHub OAuth'
     ],
     color: '254, 105, 105',
     colorLight: 'rgba(254, 105, 105, .125)',
     image: 'typingapp.png',
-    imageTablet: 'typingapp-tablet.png',
     video: 'typingapp.mp4',
-    videoTablet: 'typingapp-tablet.mp4',
     code: 'https://github.com/LukaKobaidze/typing-app',
     demo: 'https://typing-app.fly.dev/',
   },
@@ -80,7 +77,6 @@ const projectsData: {
     color: '216, 125, 74',
     colorLight: 'rgba(216, 125, 74, 0.25)',
     image: 'audiophile.jpg',
-    imageTablet: 'audiophile-tablet.png',
     video: 'audiophile.mp4',
     code: 'https://github.com/LukaKobaidze/audiophile',
     demo: 'https://lukakobaidze-audiophile.vercel.app/',
@@ -101,7 +97,6 @@ const projectsData: {
     color: '99, 95, 199',
     colorLight: 'rgba(99, 95, 199, .175)',
     image: 'taskmanagement.png',
-    imageTablet: 'taskmanagement-tablet.png',
     video: 'taskmanagement.mp4',
     code: 'https://github.com/LukaKobaidze/task-management',
     demo: 'https://lukakobaidze-kanban.netlify.app/',
@@ -121,7 +116,6 @@ const projectsData: {
     color: '173, 31, 234',
     colorLight: 'rgba(173, 31, 234, .2)',
     image: 'productfeedback.png',
-    imageTablet: 'productfeedback-tablet.png',
     code: 'https://github.com/LukaKobaidze/product-feedback',
     demo: 'https://lukakobaidze-feedbacks.netlify.app/',
   },
@@ -139,7 +133,6 @@ const projectsData: {
     color: '71, 122, 145',
     colorLight: '#1a2a33',
     image: 'chess.jpg',
-    imageTablet: 'chess-tablet.png',
     video: 'chess.mp4',
     code: 'https://github.com/LukaKobaidze/chess',
     demo: 'https://lukakobaidze-chess.netlify.app/',

@@ -20,8 +20,6 @@ export default function Projects(props: Props) {
   const { viewportWidth } = useContext(ViewportContext);
   const sectionRef = useRef<HTMLTableSectionElement>(null);
 
-  console.log(activeProject);
-
   return (
     <section id="projects" className={styles.container} ref={sectionRef}>
       <div
