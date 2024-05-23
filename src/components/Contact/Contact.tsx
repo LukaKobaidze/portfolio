@@ -71,7 +71,7 @@ export default function Contact() {
         >
           <h3 className={styles.subHeading}>Message Me</h3>
           <p className={styles.subParagraph}>
-            Send me a quick message using this form, I will contact you back on your
+            Send me a quick message using this form, I will contact you back to your
             email.
           </p>
 
@@ -135,7 +135,7 @@ export default function Contact() {
         <div className={styles.subWrapper}>
           <h3 className={styles.subHeading}>Email Me</h3>
           <p className={styles.subParagraph}>
-            Email me manually on my email address below!
+            Email me manually to my email address below!
           </p>
           <Field
             className={`${styles.field} ${styles.fieldCopy}`}
